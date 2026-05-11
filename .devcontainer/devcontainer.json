@@ -1,7 +1,7 @@
 {
-  "name": "g2ray",
+  "name": "ghtun",
   "build": {
-    "dockerfile": "Dockerfile",
+    "dockerfile": "./Dockerfile",
     "context": "."
   },
   "features": {
@@ -12,13 +12,10 @@
       "version": "latest"
     }
   },
-  "postAttachCommand": {
-    "expose": "gh codespace ports visibility 443:public -c $CODESPACE_NAME",
-    "start": "sudo /usr/local/bin/xray run -c /etc/xray/g2ray.json"
-  },
+  "postAttachCommand": "bash -lc '/app/startup.sh'",
   "portsAttributes": {
     "443": {
-      "label": "g2ray",
+      "label": "xray",
       "protocol": "http",
       "onAutoForward": "silent"
     }
